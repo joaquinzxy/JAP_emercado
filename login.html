@@ -14,7 +14,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    html,
+    body {
       height: 100%;
     }
 
@@ -37,17 +38,50 @@
   </style>
 </head>
 
-<body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+<body>
+  <div class="container p-5 col-md-4 bg-white text-center">
+    <h3 class="mb-4">eMercado - JAP</h3>
+    <div class="loginForm d-flex justify-content-center text-center">
+      <form action="post" onsubmit="return false">
+        <label for="user" class="row">Usuario</label>
+        <input name="user" class=" row" type="text">
+        <label for="pass" class="row mt-4">Contraseña</label>
+        <input name="pass" class="row" type="password">
+        <!-- button disparador del Modal y de la función loginCheck() -->
+        <button class="btn btn-primary mt-2 botonLogin" data-toggle="modal" data-target="#modalLogin" onclick="loginCheck()">Ingresar</button>
+      </form>
     </div>
   </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- H5 contenedor del titulo llenado por JS -->
+        <h5 class="modal-title" id="modalLoginLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                <!-- P contenedor del titulo llenado por JS -->
+        <p class="modal-text"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"  data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
+  <!-- importo bootstrap/jquery para que funcione el modal -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

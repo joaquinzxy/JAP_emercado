@@ -40,8 +40,29 @@ var getJSONData = function(url){
     });
 }
 
+//Función que redirecciona a la página de Login
+function gotoLogin(){
+    location.replace("login.html");  
+}
+
+//Función que limpia el localStorage, cerrando la sesión y actualizando
+function cerrarSesion(){
+  localStorage.clear()
+  location.reload()
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+
+  //Si el usuario está logueado devuelve info - a utilizar en futuro dentro del nav
+  if(localStorage.getItem("userSesion") != null){
+    console.log("Usuario: "+JSON.parse(localStorage.getItem("userSesion")).user)
+  } else if(!location.href.includes("/login.html")) {
+    //si no está logueado redirecciona al Login siempre y cuando no se encuentre ya en login.html
+    //evitando una función recursiva
+    gotoLogin()
+  }
+  //Si ninguno de los dos casos se cumple, el usuario se encuentra en la pantalla de login
 });
