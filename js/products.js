@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", async function (e) {
     //3. Hacer prodecimiento para insertar todos los productos en el HTML.
     let listaProductos = document.getElementsByClassName("list-group")[0]
     for (let i = 0; i < productos.length; i++) {
-        console.log(productos[i])
         listaProductos.innerHTML +=`  
         <a href="#" class="list-group-item list-group-item-action">
             <div class="row p-2">
