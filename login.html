@@ -42,6 +42,9 @@
   <div class="container p-5 col-md-4 bg-white text-center">
     <h3 class="mb-4">eMercado - JAP</h3>
     <div class="loginForm d-flex justify-content-center text-center">
+      <!-- action = post para no mostrar la info en URL
+          onsubmit = return false evita el reload al enviar
+      -->
       <form action="post" onsubmit="return false">
         <label for="user" class="row">Usuario</label>
         <input name="user" class=" row" type="text">
@@ -74,9 +77,6 @@
     </div>
   </div>
 </div>
-
-  
-
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
   <!-- importo bootstrap/jquery para que funcione el modal -->
