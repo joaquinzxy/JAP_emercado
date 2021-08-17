@@ -47,7 +47,7 @@ function mostrarProductos(visualizacion, productos){
     } else {
         for (let i = 0; i < productos.length; i++) {
             listaProductos.innerHTML +=`  
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row p-2">
                     <div class="col-lg-3 col-md-6 col-sm-12">
                     <img src="${productos[i].imgSrc}" class="img-thumbnail" alt="">

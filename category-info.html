@@ -13,42 +13,47 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-    <div class="container-fluid">
-    <a class="navbar-brand" href="#"><span class="text-info">e</span>-Mercado</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="categories.html">Categorías</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="products.html">Productos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sell.html">Vender</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="cart.html">Mi carrito</a>
-        </li>
-      </ul>
-      <div class="justify-content-end">
-        <form class="d-flex ms-5">
-          <input class="form-control me-sm-2" type="text" placeholder="Buscar productos...">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="text-info">e</span>-Mercado</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"><span class="badge badge-pill bg-info">1</span></i></a>
+          </li>
+        </ul>
+        <div class="ml-auto">
+          <form class="d-flex ms-5">
+            <input class="form-control me-sm-2" type="text" placeholder="Buscar productos...">
+            <button type="button" class="btn btn-info">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
   </nav>
 
   <main role="main">
