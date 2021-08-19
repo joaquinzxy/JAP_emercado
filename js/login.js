@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 });
 
-let usuario = {}
 function loginCheck(){
     //Se buscan los elementos de Input y también h5 y p dentro del modal
     let userInput = document.getElementsByName("user")[0].value;
@@ -44,22 +43,20 @@ function guardarSesion(usuarioInput, tokenSesion){
 }
 
 function onSignIn(googleUser){
-    let userInfo = JSON.stringify(googleUser.getBasicProfile())
-    usuario = userInfo
-    let userMail = userInfo.eT 
+    let userInfo = JSON.stringify(googleUser.BasicProfile.getName())
     //Se modifican los datos del modal
     let loginModalTitle = document.getElementsByClassName("modal-title")[0]
     let loginModalBody = document.getElementsByClassName("modal-text")[0]
-    loginModalTitle.innerHTML = "Bienvenido "+userInfo.Ne+"!"
+    loginModalTitle.innerHTML = "Bienvenido "+userInfo+"!"
     loginModalBody.innerHTML = "Inicio de sesión exitoso :) <br><br> Serás redirigido automaticamente hacia la tienda!"
     //el token se vuelve true
     loginToken = true;
     //Se envía la info user y token a la función encargada de guardar sesión
     guardarSesion(userMail, loginToken)
      setTimeout(() => {
-         $('#modalLogin').modal(options)
+         $('#modalLogin').modal()
          //Luego de 2,5 segundos automaticamente redirecciona al inicio
-         //window.location.replace("index.html");
+         window.location.replace("index.html");
          return true;
      }, 2500);
 }
