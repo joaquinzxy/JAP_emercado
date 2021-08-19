@@ -43,7 +43,7 @@ function guardarSesion(usuarioInput, tokenSesion){
 }
 
 function onSignIn(googleUser){
-    let userInfo = JSON.stringify(googleUser.BasicProfile.getName())
+    let userInfo = JSON.stringify(googleUser.BasicProfile().getName())
     //Se modifican los datos del modal
     let loginModalTitle = document.getElementsByClassName("modal-title")[0]
     let loginModalBody = document.getElementsByClassName("modal-text")[0]
