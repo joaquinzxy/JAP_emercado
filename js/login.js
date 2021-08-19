@@ -49,12 +49,12 @@ function onSignIn(){
     let loginModalBody = document.getElementsByClassName("modal-text")[0]
     loginModalTitle.innerHTML = "Bienvenido "+userInfo+"!"
     loginModalBody.innerHTML = "Inicio de sesión exitoso :) <br><br> Serás redirigido automaticamente hacia la tienda!"
+    $('#modalLogin').modal()
     //el token se vuelve true
     loginToken = true;
     //Se envía la info user y token a la función encargada de guardar sesión
     guardarSesion(userInfo, loginToken)
      setTimeout(() => {
-         $('#modalLogin').modal()
          //Luego de 2,5 segundos automaticamente redirecciona al inicio
          window.location.replace("index.html");
          return true;
