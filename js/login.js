@@ -42,9 +42,9 @@ function guardarSesion(usuarioInput, tokenSesion){
     localStorage.setItem("userSesion", JSON.stringify(userData))
 }
 
-function onSignIn(googleUser){
-    let userInfo = JSON.stringify(googleUser.BasicProfile().getName())
+function onSignIn(){
     //Se modifican los datos del modal
+    let userInfo = gapi.auth2.init()["currentUser"]["Td"]["Ts"].Ne
     let loginModalTitle = document.getElementsByClassName("modal-title")[0]
     let loginModalBody = document.getElementsByClassName("modal-text")[0]
     loginModalTitle.innerHTML = "Bienvenido "+userInfo+"!"
@@ -52,7 +52,7 @@ function onSignIn(googleUser){
     //el token se vuelve true
     loginToken = true;
     //Se envía la info user y token a la función encargada de guardar sesión
-    guardarSesion(userMail, loginToken)
+    guardarSesion(userInfo, loginToken)
      setTimeout(() => {
          $('#modalLogin').modal()
          //Luego de 2,5 segundos automaticamente redirecciona al inicio
