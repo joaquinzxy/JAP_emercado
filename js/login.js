@@ -44,7 +44,7 @@ function guardarSesion(usuarioInput, tokenSesion){
 
 function onSignIn(){
     //Se modifican los datos del modal
-    let userInfo = gapi.auth2.init()["currentUser"]["Td"]["Ts"].Ne
+        let userInfo = gapi.auth2.init()["currentUser"]["Td"]["Ts"].Ne
     let loginModalTitle = document.getElementsByClassName("modal-title")[0]
     let loginModalBody = document.getElementsByClassName("modal-text")[0]
     loginModalTitle.innerHTML = "Bienvenido "+userInfo+"!"
