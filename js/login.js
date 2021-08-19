@@ -48,7 +48,9 @@ function onSignIn(googleUser){
     userInfo = JSON.stringify(googleUser.getBasicProfile())
     let userMail = userInfo.eT 
     //Se modifican los datos del modal
-    loginModalTitle.innerHTML = "Bienvenido!"
+    let loginModalTitle = document.getElementsByClassName("modal-title")[0]
+    let loginModalBody = document.getElementsByClassName("modal-text")[0]
+    loginModalTitle.innerHTML = "Bienvenido "+userInfo.Ne+"!"
     loginModalBody.innerHTML = "Inicio de sesión exitoso :) <br><br> Serás redirigido automaticamente hacia la tienda!"
     //el token se vuelve true
     loginToken = true;
