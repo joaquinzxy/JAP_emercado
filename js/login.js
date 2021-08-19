@@ -11,7 +11,6 @@ function loginCheck(){
     let passInput = document.getElementsByName("pass")[0].value;
     let loginModalTitle = document.getElementsByClassName("modal-title")[0]
     let loginModalBody = document.getElementsByClassName("modal-text")[0]
-
     //Si los input no están vacios el inicio es exitoso
     if((userInput != "") && (passInput != "")){
         //Se modifican los datos del modal
@@ -24,10 +23,12 @@ function loginCheck(){
         setTimeout(() => {
             //Luego de 2,5 segundos automaticamente redirecciona al inicio
             window.location.replace("index.html");
+            return true;
         }, 2500);
     } else {
         loginModalTitle.innerHTML = "Credenciales incorrectas!"
         loginModalBody.innerHTML = "Usuario o contraseña invalidas, intente nuevamente"}
+        return false;
 }
 
 
