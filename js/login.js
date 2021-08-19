@@ -44,8 +44,19 @@ function guardarSesion(usuarioInput, tokenSesion){
 
 function onSignIn(googleUser){
     let userInfo = JSON.stringify(googleUser.getBasicProfile())
-    let userNombre = userInfo.eT 
-    guardarSesion(userNombre, true)
+    let userMail = userInfo.eT 
+    //Se modifican los datos del modal
+    loginModalTitle.innerHTML = "Bienvenido "+userInfo.Ne+"!"
+    loginModalBody.innerHTML = "Inicio de sesión exitoso :) <br><br> Serás redirigido automaticamente hacia la tienda!"
+    //el token se vuelve true
+    loginToken = true;
+    //Se envía la info user y token a la función encargada de guardar sesión
+    guardarSesion(userMail, loginToken)
+     setTimeout(() => {
+         //Luego de 2,5 segundos automaticamente redirecciona al inicio
+         window.location.replace("index.html");
+         return true;
+     }, 2500);
 }
 
 
