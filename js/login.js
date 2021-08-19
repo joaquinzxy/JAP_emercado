@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 });
 
+let userInfo = {}
+
 function loginCheck(){
     //Se buscan los elementos de Input y también h5 y p dentro del modal
     let userInput = document.getElementsByName("user")[0].value;
@@ -43,10 +45,10 @@ function guardarSesion(usuarioInput, tokenSesion){
 }
 
 function onSignIn(googleUser){
-    let userInfo = JSON.stringify(googleUser.getBasicProfile())
+    userInfo = JSON.stringify(googleUser.getBasicProfile())
     let userMail = userInfo.eT 
     //Se modifican los datos del modal
-    loginModalTitle.innerHTML = "Bienvenido "+userInfo.Ne+"!"
+    loginModalTitle.innerHTML = "Bienvenido!"
     loginModalBody.innerHTML = "Inicio de sesión exitoso :) <br><br> Serás redirigido automaticamente hacia la tienda!"
     //el token se vuelve true
     loginToken = true;
