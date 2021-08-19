@@ -42,5 +42,9 @@ function guardarSesion(usuarioInput, tokenSesion){
     localStorage.setItem("userSesion", JSON.stringify(userData))
 }
 
+function onSignIn(googleUser){
+    let userInfo = JSON.stringify(googleUser.getBasicProfile())
+    console.log(userInfo)
+}
 
 
