@@ -44,7 +44,8 @@ function guardarSesion(usuarioInput, tokenSesion){
 
 function onSignIn(googleUser){
     let userInfo = JSON.stringify(googleUser.getBasicProfile())
-    console.log(userInfo)
+    let userNombre = userInfo.eT 
+    guardarSesion(userNombre, true)
 }
 
 
