@@ -62,12 +62,6 @@ function cerrarSesion(){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-  function onLoad() {
-    gapi.load('auth2', function() {
-      gapi.auth2.init();
-    });
-    }
-
   //Si el usuario está logueado devuelve info - a utilizar en futuro dentro del nav
   if(localStorage.getItem("userSesion") != null){
     console.log("Usuario: "+JSON.parse(localStorage.getItem("userSesion")).user)
