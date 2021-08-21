@@ -48,7 +48,7 @@ function gotoLogin(){
 //Función que limpia el localStorage, cerrando la sesión y actualizando
 function cerrarSesion(){
   localStorage.clear()
-  
+
   var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('Sesión de google cerrada');
@@ -61,6 +61,12 @@ function cerrarSesion(){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+
+  function onLoad() {
+    gapi.load('auth2', function() {
+      gapi.auth2.init();
+    });
+    }
 
   //Si el usuario está logueado devuelve info - a utilizar en futuro dentro del nav
   if(localStorage.getItem("userSesion") != null){
