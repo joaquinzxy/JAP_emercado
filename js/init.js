@@ -48,6 +48,12 @@ function gotoLogin(){
 //Función que limpia el localStorage, cerrando la sesión y actualizando
 function cerrarSesion(){
   localStorage.clear()
+  
+  var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('Sesión de google cerrada');
+    });
+
   location.reload()
 }
 

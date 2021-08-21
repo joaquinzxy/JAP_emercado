@@ -42,9 +42,12 @@ function guardarSesion(usuarioInput, tokenSesion){
     localStorage.setItem("userSesion", JSON.stringify(userData))
 }
 
-function onSignIn(){
+function onSignIn(googleUser){
+
+    let googleProfile = googleUser.getBasicProfile();
+
     //Se modifican los datos del modal
-        let userInfo = gapi.auth2.init()["currentUser"]["Td"]["Ts"].Ne
+    let userInfo = googleProfile.getName()
     let loginModalTitle = document.getElementsByClassName("modal-title")[0]
     let loginModalBody = document.getElementsByClassName("modal-text")[0]
     loginModalTitle.innerHTML = "Bienvenido "+userInfo+"!"

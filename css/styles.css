@@ -17,11 +17,6 @@
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-
-  }
-}
 
 .jumbotron p:last-child {
   margin-bottom: 0;
