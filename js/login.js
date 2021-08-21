@@ -1,8 +1,13 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
 
+document.addEventListener("DOMContentLoaded", function(e){
+    window.onLoadCallback = function(){
+        gapi.auth2.init({
+            client_id: '151373688037-hvcojc6b5ai9gkvsbm65nuq19l17jhtg.apps.googleusercontent.com'
+          });
+      }
 });
 
 function loginCheck(){
