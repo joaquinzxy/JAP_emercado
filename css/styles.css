@@ -8,10 +8,8 @@
 
 .jumbotron {
   height: 50vh;
-  padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background-color: #f8f8f8;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,12 +17,6 @@
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -138,4 +130,13 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+.toTop{
+ position: fixed; 
+ right: 20px; 
+ bottom: 20px;
+ width: 50px;
+ height: 50px;
+ padding-top: 15px;
 }

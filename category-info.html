@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
+  <meta name="google-signin-client_id" content="151373688037-hvcojc6b5ai9gkvsbm65nuq19l17jhtg.apps.googleusercontent.com">
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -95,9 +96,9 @@
   </main>
   <footer class="text-muted">
     <div class="container">
-      <p class="float-right">
-        <a href="#">Volver arriba</a>
-      </p>
+      <a href="#" class="toTop btn-info text-center">
+        <i class="fas fa-arrow-up"></i>
+      </a>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
@@ -110,6 +111,9 @@
       <div></div>
     </div>
   </div>
+
+  <div class="g-signin2 mt-3" style="display: none;"></div> 
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>

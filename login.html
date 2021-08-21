@@ -8,6 +8,8 @@
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
+  <meta name="google-signin-client_id" content="151373688037-hvcojc6b5ai9gkvsbm65nuq19l17jhtg.apps.googleusercontent.com">
+
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <!-- Bootstrap core CSS -->
@@ -35,23 +37,34 @@
       padding: 15px;
       margin: auto;
     }
+
+    .g-signin2{
+      width: 100%;
+    }
+
+    .g-signin2 > div{
+      margin: 0 auto;
+    }
   </style>
 </head>
 
 <body>
-  <div class="container p-5 col-md-4 bg-white text-center">
-    <h3 class="mb-4">eMercado - JAP</h3>
-    <div class="loginForm d-flex justify-content-center text-center">
+  <div class="container py-4 col-md-4 bg-white text-center">
+    <div class="row">
+      <img src="img/login.png" width="600px" alt="">
+    </div>
+    <div class="loginForm d-flex justify-content-center text-center mt-4">
       <!-- action = post para no mostrar la info en URL
           onsubmit = return false evita el reload al enviar
       -->
-      <form action="post" onsubmit="return false">
+      <form action="post" onsubmit="return loginCheck()">
         <label for="user" class="row">Usuario</label>
         <input name="user" class=" row" type="text">
         <label for="pass" class="row mt-4">Contraseña</label>
         <input name="pass" class="row" type="password">
         <!-- button disparador del Modal y de la función loginCheck() -->
-        <button class="btn btn-info mt-2 botonLogin" data-toggle="modal" data-target="#modalLogin" onclick="loginCheck()">Ingresar</button>
+          <button class="btn btn-info mt-2 botonLogin" data-toggle="modal" data-target="#modalLogin">Ingresar</button>
+          <div class="g-signin2 mt-3" data-onsuccess="onSignIn"></div> 
       </form>
     </div>
   </div>
@@ -63,7 +76,7 @@
       <div class="modal-header">
         <!-- H5 contenedor del titulo llenado por JS -->
         <h5 class="modal-title" id="modalLoginLabel"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -82,6 +95,8 @@
   <!-- importo bootstrap/jquery para que funcione el modal -->
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 </body>
 
 </html>

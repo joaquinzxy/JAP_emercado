@@ -58,7 +58,9 @@ function mostrarProductos(visualizacion, productos){
                     <h3 class="productPrice"><span class="badge bg-info">${productos[i].currency+productos[i].cost}</span></h3>
                     </div>  
                     <p class="productDesc">${productos[i].description}</p>
-                    <p class="productSold text-right text-muted mt-5">Vendidos: ${productos[i].soldCount}</p>
+                    <div class="align-text-right col">
+                    <p class="productSold text-muted mt-5">Vendidos: ${productos[i].soldCount}</p>
+                    </div>
                     </div>  
                 </div>  
             </a>
