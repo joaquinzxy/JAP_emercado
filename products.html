@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
-  <meta name="google-signin-client_id" content="151373688037-hvcojc6b5ai9gkvsbm65nuq19l17jhtg.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="151373688037-hvcojc6b5ai9gkvsbm65nuq19l17jhtg.apps.googleusercontent.com">
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -19,7 +20,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><span class="text-info">e</span>-Mercado</a>
+      <a class="navbar-brand" href="#"><span class="text-info">e</span>-Mercado</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
         aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,14 +44,7 @@
             <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"><span class="badge badge-pill bg-info">1</span></i></a>
           </li>
         </ul>
-        <div class="ml-auto">
-          <form class="d-flex ms-5">
-            <input class="form-control me-sm-2" type="text" placeholder="Buscar productos...">
-            <button type="button" class="btn btn-info">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </div>
+        <div id="userPlaceholder" class="ml-auto mt-3 col"></div>
       </div>
     </div>
   </nav>
@@ -60,16 +54,68 @@
       <p class="lead">Seguro que algo te va a gustar!</p>
     </div>
     <div class="container">
+      <div class="row bg-info">
+        <form class="d-flex m-2">
+          <input id="searchInput" class="form-control me-sm-2" type="text" placeholder="Buscar productos...">
+          <button type="button" class="btn btn-info">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-6 text-start">
+          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+            <label class="btn btn-outline-primary active mx-2" id="sortAsc">
+              <input type="radio" name="options" autocomplete="off" class="btn-check" checked><i
+                class="fas fa-long-arrow-alt-up"></i><i class="fas fa-dollar-sign"></i>
+            </label>
+            <label class="btn btn-outline-primary mx-2" id="sortDesc">
+              <input type="radio" name="options" autocomplete="off" class="btn-check"><i
+                class="fas fa-long-arrow-alt-down"></i><i class="fas fa-dollar-sign"></i>
+            </label>
+            <label class="btn btn-outline-primary mx-2" id="sortByCount">
+              <input type="radio" name="options" autocomplete="off" class="btn-check"><i
+                class="fas fa-long-arrow-alt-down"></i><i class="fas fa-star"></i>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-right my-1">Precio</p>
+            </div>
+            <div class="col form-group">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+            <div class="col form-group">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-info btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-info btn-block ms-4" id="clearRangeFilter"><i class="fas fa-undo-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+      </div>
       <div class="text-end mx-5">
-        <label class="btn btn-light" id="lista" >
-          <input type="radio" name="options" autocomplete="off" style="display: none;"><i class="fas fa-th-list mr-1"></i>
-        </label>
-        <label class="btn btn-light" id="tiles" >
-          <input type="radio" name="options" autocomplete="off" style="display: none;"><i class="fas fa-th-large mr-1"></i>
-        </label>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-info" id="lista">
+            <input type="radio" name="options" id="option1" autocomplete="off" style="display: none;" checked>
+            <i class="fas fa-th-list mr-1"></i>
+          </label>
+          <label class="btn btn-info ms-2" id="tiles">
+            <input type="radio" name="options" id="option2" autocomplete="off"  style="display: none;">
+            <i class="fas fa-th-large mr-1"></i>
+          </label>
+        </div>
       </div>
     </div>
     <div class="container p-5">
+      <div id="product-list" class="jajaj"></div>
       <div class="list-group"></div>
       <div class="tiles-group row"></div>
     </div>
@@ -92,7 +138,7 @@
     </div>
   </div>
 
-  <div class="g-signin2 mt-3" style="display: none;"></div> 
+  <div class="g-signin2 mt-3" style="display: none;"></div>
   <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
