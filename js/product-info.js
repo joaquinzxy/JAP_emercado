@@ -204,10 +204,18 @@ function countReviews(reviews){
 }
 
 //Fusiona las reviews del JSON con las locales, luego las ordena y retorna
+// function mergeReviews() {
+//     let localReviews = JSON.parse(localStorage.getItem("newReviews"))
+//     let localAndCurrentReviews = currentReviews.map(review => review)
+//     localReviews.map(review => localAndCurrentReviews.push(review))
+//     localAndCurrentReviews = localAndCurrentReviews.sort(function (a, b) {
+//         return new Date(b.dateTime) - new Date(a.dateTime);
+//     });
+//     return localAndCurrentReviews
+// }
+
 function mergeReviews() {
-    let localReviews = JSON.parse(localStorage.getItem("newReviews"))
-    let localAndCurrentReviews = currentReviews.map(review => review)
-    localReviews.map(review => localAndCurrentReviews.push(review))
+    let localAndCurrentReviews = currentReviews.concat(localReviews)
     localAndCurrentReviews = localAndCurrentReviews.sort(function (a, b) {
         return new Date(b.dateTime) - new Date(a.dateTime);
     });
