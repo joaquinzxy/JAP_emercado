@@ -40,12 +40,18 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"><span
-                  class="badge badge-pill bg-info">1</span></i></a>
+          <li class="nav-item dropdown my-2 my-lg-0">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span id="userPlaceholder" class=""></span>
+            </a>
+            <div class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Mi perfil</a>
+              <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Ver carrito <span class="badge badge-pill bg-info">1</span></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Salir</a>
+            </div>
           </li>
         </ul>
-        <div id="userPlaceholder" class="ml-auto mt-3 col"></div>
       </div>
     </div>
   </nav>
@@ -142,7 +148,9 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
   <script src="js/product-info.js"></script>
+  
 </body>
 
 </html>

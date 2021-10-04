@@ -66,10 +66,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
   if(localStorage.getItem("userSesion") != null){
     document.getElementById("userPlaceholder").innerHTML = `
-    <p class="text-light text-center">Hola 
+    <span class="text-light text-center">Hola 
       <a class="text-info" href="my-profile.html">${JSON.parse(localStorage.getItem("userSesion")).user}</a>
-      <span class="text-muted">(<a class="text-muted" href="#" onclick="cerrarSesion()">Salir</a>)</span>
-    </p>`
+    </span>`
   } else if(!location.href.includes("/login.html")) {
     gotoLogin()
   }
