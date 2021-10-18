@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
-  <meta name="google-signin-client_id" content="151373688037-hvcojc6b5ai9gkvsbm65nuq19l17jhtg.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="151373688037-hvcojc6b5ai9gkvsbm65nuq19l17jhtg.apps.googleusercontent.com">
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -40,8 +41,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container">
       <a class="navbar-brand" href="#"><span class="text-info">e</span>-Mercado</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
-        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -60,21 +61,170 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"><span class="badge badge-pill bg-info">1</span></i></a>
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito <span
+              class="badge badge-pill bg-info" id="cart-counter"></span></a>
+          </li>
+          <li class="nav-item dropdown my-2 my-lg-0">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span id="userPlaceholder" class=""></span>
+            </a>
+            <div class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Salir</a>
+            </div>
           </li>
         </ul>
-        <div id="userPlaceholder" class="ml-auto mt-3 col"></div>
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container-fluid p-5">
+
+    <div class="text-center p-4">
+      <h2>Carrito</h2>
+      <p class="lead">Confirma tu compra y completa los detalles para el envío.</p>
+      <div class="row justify-content-end" id="currencyConverter">
+        <div class="col-lg-3 form-group">
+          <select class="custom-select" onchange="currencyConverter(this.value)">
+            <option value="UYU">Pesos uruguayos</option>
+            <option value="USD" selected="">Dolares americanos</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bg-light">
+        <div class="row">
+          
+        <div class="col-lg-12 col-md-12" id="cart-container">
+
+        </div>
+        <hr class="my-4">
+
+
+          <div class="col-lg-6 p-5" id="deliveryDetails">
+              <h5>DETALLES DE ENVÍO</h5>
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="inputAddress">Calle</label>
+                  <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección..." required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputAddress2">N° de puerta</label>
+                  <input type="number" class="form-control" id="inputNumeropuerta" placeholder="1234" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <label for="inputCity">Esquina</label>
+                  <input type="text" class="form-control" id="inputEsquina" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputZip">Codigo Postal</label>
+                  <input type="text" class="form-control" id="inputZip" required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputState">Departamento</label>
+                  <select id="inputState" class="form-control" required>
+                    <option selected>Montevideo</option>
+                    <option>Canelones</option>
+                    <option>Maldonado</option>
+                    <option>San Jose</option>
+                    <option>Lavalleja</option>
+                    <option>Treinta y Tres</option>
+                    <option>Artigas</option>
+                    <option>Rivera</option>
+                    <option>Salto</option>
+                    <option>Tacuarembo</option>
+                    <option>Paysandu</option>
+                    <option>Flores</option>
+                    <option>Florida</option>
+                    <option>Soriano</option>
+                    <option>Colonia</option>
+                    <option>Rocha</option>
+                    <option>Rio Negro</option>
+                    <option>Cerro Largo</option>
+                    <option>Durazno</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-6 p-5" id="paymentDetails">
+            <div class="col-12">
+                <h5>RESUMEN DE COMPRA</h5>
+              </div>
+            <div class="row justify-content-between">
+              <div class="col-5">
+                <p>SUBTOTAL:</p>
+              </div>
+              <div class="col-5">
+                <p id="finalSubtotal"></p>
+              </div>
+            </div>
+            <div class="row justify-content-between align-content-center d-flex">
+              <div class="col-5 align-content-center d-flex">
+                <p class="align-self-end">TIPO DE ENVÍO:</p>
+              </div>
+              <div class="col-7 align-content-center">
+                <select class="custom-select" id="selectShipping" onchange="subtotalCalc()">
+                  <option value="premium">Premium (2-5 días)</option>
+                  <option value="express">Express (5-8 días)</option>
+                  <option value="standar">Standard (12 a 15 días)</option>
+                </select>
+              </div>
+            </div>
+            <div class="row justify-content-between align-content-center d-flex mt-2">
+              <div class="col-5 align-content-center d-flex">
+                <p class="align-self-end">COSTO DE ENVÍO:</p>
+              </div>
+              <div class="col-7 align-content-center" id="shippingCost">
+              </div>
+            </div>
+            <div class="row justify-content-between align-content-center d-flex mt-2">
+              <div class="col-5 align-content-center d-flex">
+                <h6 class="align-self-end">COSTO TOTAL:</h6>
+              </div>
+              <div class="col-7 align-content-center" id="totalOrder">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-center m-4" id="cartButtons">
+              <a class="btn btn-outline-info btn-lg" href="/products.html">SEGUIR COMPRANDO</a>
+              <a class="btn btn-info btn-lg" href="#">CONFIRMAR COMPRA</a>
+          </div>
+
+      </div>
+    </div>
+
+  </div>  
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">COSTOS DE ENVÍOS</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><i class="fas fa-arrow-right"></i> Premium (2-5 días) - Costo del 15% sobre el subtotal.</p>
+          <p><i class="fas fa-arrow-right"></i> Express (5-8 días) - Costo del 7% sobre el subtotal.</p>
+          <p><i class="fas fa-arrow-right"></i> Standard (12 a 15 días) - Costo del 5% sobre el subtotal.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Entendido!</button>
+        </div>
+      </div>
     </div>
   </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -84,7 +234,7 @@
     </div>
   </div>
 
-  <div class="g-signin2 mt-3" style="display: none;"></div> 
+  <div class="g-signin2 mt-3" style="display: none;"></div>
   <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>

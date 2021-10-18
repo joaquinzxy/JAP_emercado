@@ -21,8 +21,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container">
       <a class="navbar-brand" href="#"><span class="text-info">e</span>-Mercado</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
-        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -41,10 +41,21 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"><span class="badge badge-pill bg-info">1</span></i></a>
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito <span
+                class="badge badge-pill bg-info" id="cart-counter"></span></a>
+          </li>
+          <li class="nav-item dropdown my-2 my-lg-0">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span id="userPlaceholder" class=""></span>
+            </a>
+            <div class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Salir</a>
+            </div>
           </li>
         </ul>
-        <div id="userPlaceholder" class="ml-auto mt-3 col"></div>
       </div>
     </div>
   </nav>
@@ -55,7 +66,7 @@
     </div>
     <div class="container">
       <div class="row bg-info">
-        <form class="d-flex m-2">
+        <form class="d-flex col-12 m-2">
           <input id="searchInput" class="form-control me-sm-2" type="text" placeholder="Buscar productos...">
           <button type="button" class="btn btn-info">
             <i class="fas fa-search"></i>
@@ -93,7 +104,8 @@
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
                 <button class="btn btn-info btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-info btn-block ms-4" id="clearRangeFilter"><i class="fas fa-undo-alt"></i></button>
+                <button class="btn btn-info btn-block ml-4" id="clearRangeFilter"><i
+                    class="fas fa-undo-alt"></i></button>
               </div>
             </div>
           </div>
@@ -107,8 +119,8 @@
             <input type="radio" name="options" id="option1" autocomplete="off" style="display: none;" checked>
             <i class="fas fa-th-list mr-1"></i>
           </label>
-          <label class="btn btn-info ms-2" id="tiles">
-            <input type="radio" name="options" id="option2" autocomplete="off"  style="display: none;">
+          <label class="btn btn-info ml-2" id="tiles">
+            <input type="radio" name="options" id="option2" autocomplete="off" style="display: none;">
             <i class="fas fa-th-large mr-1"></i>
           </label>
         </div>
@@ -135,6 +147,29 @@
       <div></div>
       <div></div>
       <div></div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Producto agregado!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Producto agregado con exito!</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Seguir comprando</button>
+          <a href="cart.html" class="btn btn-info">Ver carrito</a>
+
+        </div>
+      </div>
     </div>
   </div>
 

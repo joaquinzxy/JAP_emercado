@@ -2,6 +2,7 @@ let currentProduct = []
 let currentProductImages = []
 let currentReviews = []
 let currentRelated = []
+let indexProduct = null
 let localReviews = JSON.parse(localStorage.getItem("newReviews"))
 let localUser = JSON.parse(localStorage.getItem("userSesion")).user
 
@@ -11,6 +12,11 @@ let infoDescription = document.getElementById("description")
 let reviewContainer = document.getElementById("reviewsContainer")
 let relatedContainer = document.getElementById("relatedTo")
 let estrellasNewReview = document.getElementsByClassName("starsComment")
+
+function getIndexProduct(products){
+    let product = products.find(item => item.name=="Chevrolet Onix Joy")
+    indexProduct = products.indexOf(product)
+}
 
 //muestra la info del producto
 function ShowProductInfo(productInfo) {
@@ -72,7 +78,6 @@ function showReviews(productReviews) {
         reviewContainer.innerHTML += comentario;
     });
 }
-
 
 //Si el usuario no publicó una review, obtiene los datos y sube la nueva
 function publishReview() {
@@ -158,6 +163,7 @@ function loadJsonData() {
 
             getJSONData(PRODUCTS_URL).then(function (resultObj) {
                 if (resultObj.status === "ok") {
+                    getIndexProduct(resultObj.data)
                     showRelated(resultObj.data);
                 }
             });

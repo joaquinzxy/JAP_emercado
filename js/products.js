@@ -50,7 +50,7 @@ function showProductsList(){
 
                 if(currentView=="list"){
                     htmlContentToAppend += `  
-                    <a href="product-info.html" class="list-group-item list-group-item-action">
+                    <div href="#" class="list-group-item list-group-item-action">
                         <div class="row p-2">
                             <div class="col-lg-3 col-md-6 col-sm-12">
                             <img src="${product.imgSrc}" class="img-thumbnail" alt="">
@@ -58,30 +58,41 @@ function showProductsList(){
                             <div class="col-lg-9 col-md-6 col-sm-12">
                             <div class="row justify-content-between">  
                             <h5 class="productName text-dark">${product.name}</h5>
-                            <h3 class="productPrice"><span class="badge bg-info">${product.currency+product.cost}</span></h3>
+                            <h3 class="productPrice"><span class="badge badge-pill badge-primary text-light">${product.currency+product.cost}</span></h3>
                             </div>  
                             <p class="productDesc">${product.description}</p>
-                            <div class="align-text-right col">
-                            <p class="productSold text-muted mt-5">Vendidos: ${product.soldCount}</p>
+                            <div class="row justify-content-between mt-5">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                            <span class="productSold text-muted mt-5">Vendidos: ${product.soldCount}</span>
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+                            <button role="button" class="btn btn-sm btn-outline-info" onclick="location.href='product-info.html'">VER PRODUCTO</button>
+                            <button type="button" onclick="addToCart(${i})" class="btn btn-sm btn-info" href="#"  data-toggle='modal' data-target='#exampleModal'>AGREGAR AL CARRITO <i
+                            class="fas fa-shopping-cart"></i></button>
+                            </div>
+                          </div>
+
                             </div>  
                         </div>  
-                    </a>
+                    </div>
                     `
                 } else {
                     htmlContentToAppend += `
                     <div class="col-lg-4 col-md-6 col-sm-12">
-                        <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                        <div class="card mb-4 shadow-sm custom-card">
                             <img class="bd-placeholder-img card-img-top" src="${product.imgSrc}">
                             <div class="card-body">
                             <h3>${product.name}</h3>
                             <p class="card-text">${product.description}</p>
-                            <h3><span class="badge bg-info">${product.currency+product.cost}</span></h3>
+                            <h3><span class="badge badge-pill badge-primary text-light">${product.currency+product.cost}</span></h3>
+                            <button role="button" class="btn btn-sm btn-outline-info" onclick="location.href='product-info.html'">VER PRODUCTO</button>
+                            <button type="button" onclick="addToCart(${i})" class="btn btn-sm btn-info" href="#"  data-toggle='modal' data-target='#exampleModal'>AGREGAR AL CARRITO <i
+                            class="fas fa-shopping-cart"></i></button>
                             </div>
                             <div class="card-footer">
                             <small class="text-muted">Vendidos: ${product.soldCount}</small>
                         </div>
-                        </a>
+                        </div>
                     </div>
                     ` 
                 }
@@ -103,7 +114,6 @@ function sortAndShowProducts(sortCriteria, productsArray){
     //Muestro las categorías ordenadas
     showProductsList();
 }
-
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
