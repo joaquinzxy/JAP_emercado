@@ -22,7 +22,6 @@ function showCart() {
     let contenedor = document.getElementById("cart-container")
     contenedor.innerHTML = ""
     if(cartData.length<=0){
-        let contenedor = document.getElementById("cart-container")
         document.getElementById("deliveryDetails").innerHTML=""
         document.getElementById("paymentDetails").innerHTML=""
         document.getElementById("cartButtons").innerHTML=""
