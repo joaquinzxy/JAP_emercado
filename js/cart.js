@@ -44,7 +44,7 @@ function showCart() {
                   <div class="col-lg-4 col-sm-8"><h5><strong>${cartItem.name}</strong></h5></div>
                   <div class="col-lg-2 col-sm-4"><h5 class="text-right">${cartItem.currency + cartItem.unitCost} </h5></div>
                   <div class="col-lg-1 col-sm-6 text-center m-0">
-                    <input type="number" id="juan" name="input${i}" min="1" max="99" onchange="updateCart(this.value, ${i})" value="${cartItem.count}">
+                    <input type="number" name="input${i}" min="1" max="99" onchange="updateCart(this.value, ${i})" value="${cartItem.count}">
                   </div>
                   <div class="col-lg-2 col-sm-6 text-center"><h5 class="text-left subtotal">${cartItem.currency + cartItem.unitCost * cartItem.count} </h5></div>
                   <div class="col-lg-1 col-sm-12 mr-auto><button class="btn btn-info text-right" type="button" onclick="deleteItem(${i})"><i class="fas fa-times-circle text-danger"></i></button></div>
