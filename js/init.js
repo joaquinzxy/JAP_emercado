@@ -105,11 +105,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (!localStorage.getItem("localCart")) {
           let cartData = resultObj.data.articles;
           localStorage.setItem("localCart", JSON.stringify(cartData))
+          let cartCount = cartData.map(item=>item.count).reduce((count, unitCount)=>count+unitCount, 0)
+          cartCounter(cartCount)
         } else {
           let cartData = JSON.parse(localStorage.getItem("localCart"))
           let cartCount = cartData.map(item=>item.count).reduce((count, unitCount)=>count+unitCount, 0)
           cartCounter(cartCount)
-
         }
       }
     });
