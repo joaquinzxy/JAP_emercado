@@ -31,7 +31,7 @@ function showCart() {
         
         contenedor.innerHTML = `<div class='container text-center mt-5'><h3>No hay elementos en tu carrito :( </h3>
                   <div class="col-12 text-center m-4">
-              <a class="btn btn-info btn-lg" href="/products.html">IR A LA TIENDA</a>
+              <a class="btn btn-info btn-lg" href="products.html">IR A LA TIENDA</a>
           </div>
         <div>`
         
