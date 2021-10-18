@@ -71,6 +71,7 @@ function deleteItem(id){
     localCart.splice(id, 1)
     localStorage.setItem("localCart", JSON.stringify(localCart))
     cartData = localCart;
+    cartCounter(cartData.map(item=>item.count).reduce((count, unitCount)=>count+unitCount, 0))
     showCart()
 }
 

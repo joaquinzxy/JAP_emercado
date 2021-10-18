@@ -91,7 +91,7 @@ function addToCart(id){
 let productsArray = []
 
 function cartCounter(count){
-  document.getElementById("cart-counter").innerHTML = count
+  count>0 ? document.getElementById("cart-counter").innerHTML = count : document.getElementById("cart-counter").innerHTML = ""
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
