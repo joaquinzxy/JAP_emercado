@@ -57,8 +57,9 @@ function showCart() {
 
 function updateCart(valor, id) {
 
-    let items = document.getElementsByClassName("cart-item")
     cartData[id].count = valor
+    console.log(cartData)
+    let items = document.getElementsByClassName("cart-item")
     let subtotal = valor * cartData[id].unitCost
     localStorage.setItem("localCart", JSON.stringify(cartData))
     items[id].getElementsByClassName("subtotal")[0].innerHTML = cartData[id].currency + subtotal

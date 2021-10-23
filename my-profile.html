@@ -79,11 +79,55 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div class="text-center p-4">
+      <h2>Mi perfil</h2>
+      <p class="lead">Datos personales</p>
+      <div class="row justify-content-center">
+        <div class="col-3 mb-4 position-relative">
+            <img  id="userphoto" src="/img/user_icon.png" class="img-fluid rounded-circle" alt="">
+            <button class="btn btn-sm btn-info position-absolute" id="uploadButton"><i class="fas fa-upload"></i></button>
+        </div>
+        <div class="col-12">
+          <form onsubmit="return setUserData()">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="surname">Apellido</label>
+                <input type="text" class="form-control" id="surname" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="phone">Telefono</label>
+                <input type="number" class="form-control" id="phone">
+
+              </div>
+              <div class="form-group col-md-2">
+                <label for="age">Edad</label>
+                <input type="number" class="form-control" id="age">
+              </div>
+              <div class="row">
+                <div class="col-md-8 order-md-1 d-none">
+                    <label for="zip">Imágenes</label>
+                    <div class="needsclick dz-clickable" id="file-upload">
+                      <div class="dz-message needsclick">
+                        Arrastra tus fotos aquí<br>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-info">GUARDAR</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
   <footer class="text-muted bg-light">

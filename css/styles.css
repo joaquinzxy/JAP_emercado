@@ -140,3 +140,9 @@ a.custom-card:hover {
  height: 50px;
  padding-top: 15px;
 }
+
+#uploadButton{
+  bottom: 0;
+  right: 25%;
+  border-radius: 30px;
+}
