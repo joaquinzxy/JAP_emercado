@@ -2,7 +2,12 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+
     if (localStorage.getItem("userSesion")) {
+        if (Object.entries(userData).length<3) {
+            triggerModal("DATOS PERSONALES", "Datos incompletos, recuerda completar tu información personal para tener una experiencia más personalizada")
+            console.log(Object.entries(userData).length)
+        }
         getUserData()
     }
 
@@ -41,6 +46,7 @@ function setUserData() {
     userData.phone = document.getElementById("phone").value;
     userData.age = document.getElementById("age").value;
     localStorage.setItem("userSesion", JSON.stringify(userData))
+    triggerModal("DATOS GUARDADOS!", "Gracias por completar tus datos!")
     return false
 }
 
@@ -54,4 +60,11 @@ function getUserData() {
     document.getElementById("userphoto").src= userData.photoURL || "/img/user_icon.png"
 }
 
+function triggerModal(title, body){
+    let loginModalTitle = document.getElementsByClassName("modal-title")[0]
+    let loginModalBody = document.getElementsByClassName("modal-text")[0]
+    loginModalTitle.innerHTML = title
+    loginModalBody.innerHTML = body
+    $('#modalLogin').modal()
+}
 

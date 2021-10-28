@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function(e){
         <div class="col-sm-6 col-md-6 col-lg-4">
         <a href="categories.html" class="card mb-4 shadow-sm custom-card">
           <img class="bd-placeholder-img card-img-top" src="${categorias[i].imgSrc}">
-          <h3 class="m-3">${categorias[i].name} <span class="badge bg-info">${categorias[i].productCount}</span></h3>
+          <h3 class="m-3">${categorias[i].name} <span class="badge bg-info text-light">${categorias[i].productCount}</span></h3>
           <div class="card-body">
             <p class="card-text">${categorias[i].description}</p>
           </div>
