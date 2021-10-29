@@ -57,7 +57,7 @@ function getUserData() {
     document.getElementById("email").value = userData.email || ""
     document.getElementById("phone").value = userData.phone || ""
     document.getElementById("age").value = userData.age || ""
-    document.getElementById("userphoto").src= userData.photoURL || "/img/user_icon.png"
+    document.getElementById("userphoto").src= userData.photoURL || "img/user_icon.png"
 }
 
 function triggerModal(title, body){
