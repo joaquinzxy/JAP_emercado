@@ -1,20 +1,6 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) {
-
-    if (localStorage.getItem("userSesion")) {
-        if (Object.entries(userData).length<3) {
-            triggerModal("DATOS PERSONALES", "Datos incompletos, recuerda completar tu información personal para tener una experiencia más personalizada")
-            console.log(Object.entries(userData).length)
-        }
-        getUserData()
-    }
-
-    document.getElementById("uploadButton").addEventListener("click", (e)=>{
-        document.getElementById("file-upload").click()
-    })
-});
 
 let userData = JSON.parse(localStorage.getItem("userSesion"))
 
@@ -51,7 +37,6 @@ function setUserData() {
 }
 
 function getUserData() {
-    userData = JSON.parse(localStorage.getItem("userSesion"))
     document.getElementById("name").value = userData.name || ""
     document.getElementById("surname").value = userData.surname || ""
     document.getElementById("email").value = userData.email || ""
@@ -67,4 +52,19 @@ function triggerModal(title, body){
     loginModalBody.innerHTML = body
     $('#modalLogin').modal()
 }
+
+document.addEventListener("DOMContentLoaded", function (e) {
+
+    if (localStorage.getItem("userSesion")) {
+        if (Object.entries(userData).length<3) {
+            triggerModal("DATOS PERSONALES", "Datos incompletos, recuerda completar tu información personal para tener una experiencia más personalizada")
+        } else {
+            getUserData()
+        }        
+    }
+
+    document.getElementById("uploadButton").addEventListener("click", (e)=>{
+        document.getElementById("file-upload").click()
+    })
+});
 
