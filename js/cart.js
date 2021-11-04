@@ -23,7 +23,7 @@ function showCart() {
     contenedor.innerHTML = ""
     if(cartData.length<=0){
         document.getElementById("deliveryDetails").innerHTML=""
-        document.getElementById("paymentDetails").innerHTML=""
+        document.getElementById("orderDetails").innerHTML=""
         document.getElementById("cartButtons").innerHTML=""
 
         document.getElementById("currencyConverter").innerHTML =""
