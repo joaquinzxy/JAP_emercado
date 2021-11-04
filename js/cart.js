@@ -58,7 +58,7 @@ function showCart() {
 function updateCart(valor, id) {
 
     cartData[id].count = valor
-    console.log(cartData)
+
     let items = document.getElementsByClassName("cart-item")
     let subtotal = valor * cartData[id].unitCost
     localStorage.setItem("localCart", JSON.stringify(cartData))
@@ -82,7 +82,7 @@ function subtotalCalc(){
     let total = subtotal+shippingCost
     
     document.getElementById("finalSubtotal").innerHTML = actualCurrency + subtotal
-    document.getElementById("shippingCost").innerHTML = actualCurrency + shippingCost+ " <small><a href='#'  data-toggle='modal' data-target='#exampleModal'>(Ver tarifas)</a></small>"
+    document.getElementById("shippingCost").innerHTML = actualCurrency + shippingCost+ " <small><a href='#'  data-toggle='modal' data-target='#shippingModal'>(Ver tarifas)</a></small>"
     document.getElementById("totalOrder").innerHTML = actualCurrency + total
     
 }
