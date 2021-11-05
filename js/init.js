@@ -69,7 +69,7 @@ function addToCart(id){
           item.count += 1
           itemExist = true;
           localStorage.setItem("localCart", JSON.stringify(localCart))
-          cartCounter(localCart.map(item=>item.count).reduce((count, unitCount)=>count+unitCount, 0))
+          cartCounter(localCart.map(item=>parseInt(item.count)).reduce((count, unitCount)=>parseInt(count)+parseInt(unitCount), 0))
       }
   });
   if(!itemExist){
@@ -82,7 +82,7 @@ function addToCart(id){
       }
       localCart.push(cartItem)
       localStorage.setItem("localCart", JSON.stringify(localCart))
-      cartCounter(localCart.map(item=>item.count).reduce((count, unitCount)=>count+unitCount, 0))
+      cartCounter(localCart.map(item=>parseInt(item.count)).reduce((count, unitCount)=>count+unitCount, 0))
 
   }
 
@@ -106,13 +106,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
       if (resultObj.status === "ok") {
         let cartData = resultObj.data.articles;
         localStorage.setItem("localCart", JSON.stringify(cartData))
-        let cartCount = cartData.map(item=>item.count).reduce((count, unitCount)=>count+unitCount, 0)
+        let cartCount = cartData.map(item=>parseInt(item.count)).reduce((count, unitCount)=>count+unitCount, 0)
         cartCounter(cartCount)
       }
     });
   } else {
     let cartData = JSON.parse(localStorage.getItem("localCart"))
-    let cartCount = cartData.map(item=>item.count).reduce((count, unitCount)=>count+unitCount, 0)
+    let cartCount = cartData.map(item=>parseInt(item.count)).reduce((count, unitCount)=>count+unitCount, 0)
     cartCounter(cartCount)
   }
 

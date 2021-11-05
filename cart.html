@@ -197,14 +197,11 @@
           <div class="row justify-content-between align-items-baseline">
             <div class="col-5">
               <p>MÉTODO DE PAGO:</p>
-              <small><a class="text-info" href="#" data-toggle='modal' data-target='#paymentMethodsModal'>+ GESTIONAR MÉTODOS</a></small>
             </div>
             <div class="col-7">
-              <select class="custom-select" id="selectShipping" onchange="subtotalCalc()">
-                <option value="premium">Premium (2-5 días)</option>
-                <option value="express">Express (5-8 días)</option>
-                <option value="standar">Standard (12 a 15 días)</option>
-              </select>
+              <p>NO DEFINIDO</p>
+              <small><a class="text-info" href="#" data-toggle='modal' data-target='#paymentMethodsModal'>+ GESTIONAR
+                  MÉTODOS</a></small>
             </div>
           </div>
         </div>
@@ -241,72 +238,104 @@
     </div>
   </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="paymentMethodsModal" tabindex="-1" aria-labelledby="paymentMethodsModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="paymentMethodsModalLabel">MÉTODOS DE PAGO</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
+  <!-- Modal -->
+  <div class="modal fade" id="paymentMethodsModal" tabindex="-1" aria-labelledby="paymentMethodsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentMethodsModalLabel">MÉTODOS DE PAGO</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="methodsContainer">
+
+          <div id="card-method">
             <div class="row align-items-center method-item">
-              <div class="col-9"><span><i class="far fa-credit-card"></i></span> TARJETA </div>
-              <div class="col-1 text-left"><small><button class="btn btn-info btn-sm"><i class="far fa-edit"></i></button></small></div>
-              <div class="col-1 text-right"><small><button class="btn btn-danger btn-sm"><i class="fas fa-times"></i></small></div>
+              <div class="col-9">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="paymentRadio" id="card-radio" value="card" checked>
+                  <label class="form-check-label" for="card-radio">
+                    <span id="card-icon"><i class="far fa-credit-card"></i></span> TARJETA
+                  </label>
+                </div>
+              </div>
+              <div class="col-3">
+                <span class="badge badge-primary" id="card-validation-badge">NO AGREGADA</span>
+              </div>
             </div>
-            <hr>
-            <div class="row align-items-center method-item">
-              <div class="col-9"><span><i class="far fa-credit-card"></i></span> TARJETA </div>
-              <div class="col-1 text-left"><small><button class="btn btn-info btn-sm"><i class="far fa-edit"></i></button></small></div>
-              <div class="col-1 text-right"><small><button class="btn btn-danger btn-sm"><i class="fas fa-times"></i></small></div>
-            </div>
-            <hr>
-            <div class="row align-items-center method-item">
-              <div class="col-9"><span><i class="fas fa-money-check-alt"></i></span> CUENTA </div>
-              <div class="col-1 text-left"><small><button class="btn btn-info btn-sm"><i class="far fa-edit"></i></button></small></div>
-              <div class="col-1 text-right"><small><button class="btn btn-danger btn-sm"><i class="fas fa-times"></i></small></div>
-            </div>
-            <hr>
-            <div class="row align-items-center method-item">
-              <div class="col-9"><span><i class="fas fa-money-check-alt"></i></span> CUENTA </div>
-              <div class="col-1 text-left"><small><button class="btn btn-info btn-sm"><i class="far fa-edit"></i></button></small></div>
-              <div class="col-1 text-right"><small><button class="btn btn-danger btn-sm"><i class="fas fa-times"></i></small></div>
-            </div>
-            <hr>
-            <div class="row mt-3 d-none">
+            <div class="row mt-3">
               <div class="col-12">
-                <h5>AGREGAR NUEVO</h5>
                 <form>
-                  <div class="form-row">
-                    <div class="form-group col-md-12">
-                      <label for="inputAddress">Número de tarjeta</label>
-                      <input type="number" class="form-control" id="inputNumberCard" placeholder="Ingrese su número" required>
+                  <fieldset id="fieldset-card" >
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label for="inputNumberCard">Número de tarjeta</label>
+                        <input type="number" class="form-control" id="inputNumberCard" placeholder="Ingrese su número"
+                          required>
+                      </div>
                     </div>
-                  </div>
+
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <label for="inputCity">PIN</label>
-                      <input type="number" class="form-control" id="inputPinCard" placeholder="Ver al dorso..." required>
+                      <label for="inputPinCard">CCV</label>
+                      <input type="number" class="form-control" id="inputPinCard" placeholder="Ver al dorso..."
+                        required>
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="inputAddress2">Vencimiento (MM/AA)</label>
-                      <input type="month" class="form-control" id="start" name="start" min="2021-10" value="2030-12">
+                      <label for="inputDateCard">Vencimiento (MM/AA)</label>
+                      <input type="month" class="form-control" id="inputDateCard" name="inputDateCard" min="2021-10"
+                        value="2030-12">
                     </div>
                   </div>
+                </fieldset>
                 </form>
               </div>
             </div>
+          </div>
 
+          <hr>
+
+          <div id="bank-method">
+            <div class="row align-items-center method-item">
+              <div class="col-9">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="paymentRadio" id="bank-radio" value="bank">
+                  <label class="form-check-label" for="bank-radio">
+                    <span><i class="fas fa-money-check-alt"></i></span> CUENTA
+                  </label>
+                </div>
+              </div>
+              <div class="col-3">
+                <span class="badge badge-primary" id="bank-validation-badge"> NO AGREGADA </span>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <form>
+                  <fieldset  id="fieldset-bank" disabled>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="inputBankAccount">Número de cuenta</label>
+                      <input type="number" class="form-control" id="inputBankAccount" placeholder="Ingrese su número..."
+                        required>
+                    </div>
+                  </div>
+                </fieldset>
+                </form>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Entendido!</button>
-          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
+          <button type="button" onclick="methodValidation()" class="btn btn-success">VALIDAR</button>
         </div>
       </div>
     </div>
+  </div>
 
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -323,6 +352,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/cardChecker.js"></script>
   <script src="js/cart.js"></script>
 </body>
 

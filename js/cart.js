@@ -1,11 +1,22 @@
-const USD=40; 
+const USD = 40;
 let cartData = JSON.parse(localStorage.getItem("localCart"))
 let actualCurrency = "USD"
 let shippingRates = {
-    "premium" : {"rate": 0.15, "desc": "Costo del 15% sobre el subtotal." },
-    "express" : {"rate": 0.7, "desc": "Costo del 7% sobre el subtotal." },
-    "standar" : {"rate": 0.5, "desc": "Costo del 5% sobre el subtotal." }
+    "premium": { "rate": 0.15, "desc": "Costo del 15% sobre el subtotal." },
+    "express": { "rate": 0.7, "desc": "Costo del 7% sobre el subtotal." },
+    "standar": { "rate": 0.5, "desc": "Costo del 5% sobre el subtotal." }
 }
+let paymentMethodObj = {
+    "selectedPayment": "card",
+    "validCard": false,
+    "validBank": false
+}
+
+
+const paymentRadios = document.getElementsByName("paymentRadio")
+const cardPaymentFieldset = document.getElementById("fieldset-card")
+const bankPaymentFieldset = document.getElementById("fieldset-bank")
+
 
 function currencyConverter(currency) {
     actualCurrency = currency
@@ -21,19 +32,19 @@ function currencyConverter(currency) {
 function showCart() {
     let contenedor = document.getElementById("cart-container")
     contenedor.innerHTML = ""
-    if(cartData.length<=0){
-        document.getElementById("deliveryDetails").innerHTML=""
-        document.getElementById("orderDetails").innerHTML=""
-        document.getElementById("cartButtons").innerHTML=""
+    if (cartData.length <= 0) {
+        document.getElementById("deliveryDetails").innerHTML = ""
+        document.getElementById("paymentDetails").innerHTML = ""
+        document.getElementById("cartButtons").innerHTML = ""
 
-        document.getElementById("currencyConverter").innerHTML =""
-        
+        document.getElementById("currencyConverter").innerHTML = ""
+
         contenedor.innerHTML = `<div class='container text-center mt-5'><h3>No hay elementos en tu carrito :( </h3>
                   <div class="col-12 text-center m-4">
               <a class="btn btn-info btn-lg" href="products.html">IR A LA TIENDA</a>
           </div>
         <div>`
-        
+
     } else {
         for (let i = 0; i < cartData.length; i++) {
             const cartItem = cartData[i];
@@ -66,26 +77,63 @@ function updateCart(valor, id) {
     subtotalCalc()
 }
 
-function deleteItem(id){
+function deleteItem(id) {
     let localCart = JSON.parse(localStorage.getItem("localCart"))
     localCart.splice(id, 1)
     localStorage.setItem("localCart", JSON.stringify(localCart))
     cartData = localCart;
-    cartCounter(cartData.map(item=>item.count).reduce((count, unitCount)=>count+unitCount, 0))
+    cartCounter(cartData.map(item => item.count).reduce((count, unitCount) => count + unitCount, 0))
     showCart()
 }
 
-function subtotalCalc(){
-    let subtotal = cartData.map(item => item.count*item.unitCost).reduce((subtotal, itemSubtotal) => subtotal+itemSubtotal, 0)
+function subtotalCalc() {
+    let subtotal = cartData.map(item => item.count * item.unitCost).reduce((subtotal, itemSubtotal) => subtotal + itemSubtotal, 0)
     let shippingChoosen = document.getElementById("selectShipping").value
-    let shippingCost = shippingRates[shippingChoosen].rate*subtotal
-    let total = subtotal+shippingCost
-    
+    let shippingCost = shippingRates[shippingChoosen].rate * subtotal
+    let total = subtotal + shippingCost
+
     document.getElementById("finalSubtotal").innerHTML = actualCurrency + subtotal
-    document.getElementById("shippingCost").innerHTML = actualCurrency + shippingCost+ " <small><a href='#'  data-toggle='modal' data-target='#shippingModal'>(Ver tarifas)</a></small>"
+    document.getElementById("shippingCost").innerHTML = actualCurrency + shippingCost + " <small><a href='#'  data-toggle='modal' data-target='#shippingModal'>(Ver tarifas)</a></small>"
     document.getElementById("totalOrder").innerHTML = actualCurrency + total
-    
+
 }
-    document.addEventListener("DOMContentLoaded", function (e) {
-                currencyConverter(actualCurrency)
+
+function methodValidation(){
+    if (paymentMethodObj.selectedPayment==="bank") {
+        let inputBankAccount = document.getElementById("inputBankAccount")
+        paymentMethodObj.validBank = true
+        if (inputBankAccount.value != "") {
+            document.getElementById("bank-validation-badge").innerHTML="VALIDADA" 
+        }
+    }
+    if(paymentMethodObj.selectedPayment==="card") {
+        let inputCardNumber = document.getElementById("inputNumberCard")
+        let inputCardCCV = document.getElementById("inputPinCard")
+        let inputCardDate = document.getElementById("inputDateCard")
+        paymentMethodObj.validBank = true
+        if (inputCardNumber.value != "" && inputCardCCV.value != "" && inputCardDate.value != "") {
+            document.querySelector("#card-icon").innerHTML = creditCardType(inputCardNumber.value);
+            document.getElementById("card-validation-badge").innerHTML="VALIDADA"
+        } else {
+            paymentMethodObj.validBank = false
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function (e) {
+    currencyConverter(actualCurrency)
+
+    paymentRadios.forEach(radio => {
+        radio.addEventListener("change", (event) => {
+            let paymentType = event.target.value
+            if (paymentType === "bank") {
+                cardPaymentFieldset.setAttribute("disabled", "");
+                bankPaymentFieldset.removeAttribute("disabled");
+            } else {
+                bankPaymentFieldset.setAttribute("disabled", "");
+                cardPaymentFieldset.removeAttribute("disabled");
+            }
+            paymentMethodObj.selectedPayment = paymentType
+        })
     });
+});
