@@ -16,6 +16,7 @@ let paymentMethodObj = {
 const paymentRadios = document.getElementsByName("paymentRadio")
 const cardPaymentFieldset = document.getElementById("fieldset-card")
 const bankPaymentFieldset = document.getElementById("fieldset-bank")
+const paymentInputData = document.getElementsByClassName("paymentInputData")
 
 
 function currencyConverter(currency) {
@@ -103,19 +104,23 @@ function methodValidation(){
         let inputBankAccount = document.getElementById("inputBankAccount")
         paymentMethodObj.validBank = true
         if (inputBankAccount.value != "") {
-            document.getElementById("bank-validation-badge").innerHTML="VALIDADA" 
+            document.getElementById("bank-validation-badge").innerHTML=' <span class="badge badge-success">VALIDADA</span>' 
         }
+    } else {
+        paymentMethodObj.validBank = false
     }
     if(paymentMethodObj.selectedPayment==="card") {
         let inputCardNumber = document.getElementById("inputNumberCard")
         let inputCardCCV = document.getElementById("inputPinCard")
         let inputCardDate = document.getElementById("inputDateCard")
-        paymentMethodObj.validBank = true
+        paymentMethodObj.validCard = true
         if (inputCardNumber.value != "" && inputCardCCV.value != "" && inputCardDate.value != "") {
             document.querySelector("#card-icon").innerHTML = creditCardType(inputCardNumber.value);
             document.getElementById("card-validation-badge").innerHTML="VALIDADA"
+            document.getElementById("card-validation-badge").innerHTML=' <span class="badge badge-success">VALIDADA</span>' 
+
         } else {
-            paymentMethodObj.validBank = false
+            paymentMethodObj.validCard = false
         }
     }
 }
@@ -136,4 +141,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
             paymentMethodObj.selectedPayment = paymentType
         })
     });
+
+    for (const input of paymentInputData) {
+        input.addEventListener("change", (e)=>{
+            let method = e.target.dataset.method
+            if(method=="card"){
+                document.getElementById("card-validation-badge").innerHTML=' <span class="badge badge-warning">MODIFICADA</span>' 
+                paymentMethodObj.validCard = false
+            }
+            if(method=="bank"){
+                document.getElementById("bank-validation-badge").innerHTML=' <span class="badge badge-warning">MODIFICADA</span>' 
+                paymentMethodObj.validBank = false
+
+            }
+        })
+    }
+
 });

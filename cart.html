@@ -199,7 +199,9 @@
               <p>MÉTODO DE PAGO:</p>
             </div>
             <div class="col-7">
-              <p>NO DEFINIDO</p>
+              <div id="selectedPaymentContainer">
+                <p>NO DEFINIDO</p>
+              </div>
               <small><a class="text-info" href="#" data-toggle='modal' data-target='#paymentMethodsModal'>+ GESTIONAR
                   MÉTODOS</a></small>
             </div>
@@ -261,8 +263,8 @@
                   </label>
                 </div>
               </div>
-              <div class="col-3">
-                <span class="badge badge-primary" id="card-validation-badge">NO AGREGADA</span>
+              <div class="col-3" id="card-validation-badge">
+                <span class="badge badge-primary">NO AGREGADA</span>
               </div>
             </div>
             <div class="row mt-3">
@@ -272,7 +274,7 @@
                     <div class="form-row">
                       <div class="form-group col-md-12">
                         <label for="inputNumberCard">Número de tarjeta</label>
-                        <input type="number" class="form-control" id="inputNumberCard" placeholder="Ingrese su número"
+                        <input type="number" class="form-control paymentInputData" id="inputNumberCard" data-method="card" placeholder="Ingrese su número"
                           required>
                       </div>
                     </div>
@@ -280,12 +282,12 @@
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="inputPinCard">CCV</label>
-                      <input type="number" class="form-control" id="inputPinCard" placeholder="Ver al dorso..."
+                      <input type="number" class="form-control paymentInputData" id="inputPinCard" data-method="card" placeholder="Ver al dorso..."
                         required>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputDateCard">Vencimiento (MM/AA)</label>
-                      <input type="month" class="form-control" id="inputDateCard" name="inputDateCard" min="2021-10"
+                      <input type="month" class="form-control paymentInputData" id="inputDateCard" data-method="card" name="inputDateCard" min="2021-10"
                         value="2030-12">
                     </div>
                   </div>
@@ -307,8 +309,8 @@
                   </label>
                 </div>
               </div>
-              <div class="col-3">
-                <span class="badge badge-primary" id="bank-validation-badge"> NO AGREGADA </span>
+              <div class="col-3" id="bank-validation-badge">
+                <span class="badge badge-primary"> NO AGREGADA </span>
               </div>
             </div>
             <div class="row mt-3">
@@ -318,7 +320,7 @@
                   <div class="form-row">
                     <div class="form-group col-md-12">
                       <label for="inputBankAccount">Número de cuenta</label>
-                      <input type="number" class="form-control" id="inputBankAccount" placeholder="Ingrese su número..."
+                      <input type="number" class="form-control paymentInputData" data-method="bank" id="inputBankAccount" placeholder="Ingrese su número..."
                         required>
                     </div>
                   </div>
